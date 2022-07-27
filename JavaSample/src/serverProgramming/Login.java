@@ -1,4 +1,4 @@
-package practice;
+package serverProgramming;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,7 +28,7 @@ public void login_accessProcess() {
 	}catch(Exception e) {
 		System.out.println("PW를 잘못 입력하셨습니다.");
 	}
-	String sql = "select * from marry where mem_ID = '"+id+"'";// 받는값은 스캐너값으로
+	String sql = "select * from marry where ID = '"+id+"'";// 받는값은 스캐너값으로
 	
 	try {
 		pstmt = conn.prepareStatement(sql);
@@ -36,10 +36,10 @@ public void login_accessProcess() {
 		ResultSet rs = pstmt.executeQuery();
 		
 		if(rs.next()) {
-			if(id.equals(rs.getString("mem_ID")) == true & pw.equals(rs.getString("mem_pw")) == true ) {
+			if(id.equals(rs.getString("ID")) == true & pw.equals(rs.getString("PW")) == true ) {
 				do {
 					System.out.println("로그인 성공");
-					System.out.println("남자 조회:1 | 여자 조회:2");
+					System.out.println("남자 조회:1 | 여자 조회:2 | 종료:3 ");
 					
 					J = sc.nextInt();
 					if(J == 1) {
@@ -54,7 +54,7 @@ public void login_accessProcess() {
 						System.exit(0);
 					}
 				} while(J != 3);
-			} else if(id.equals(rs.getString("mem_ID")) ==  true & pw.equals(rs.getString("mem_pw")) == false) {
+			} else if(id.equals(rs.getString("ID")) ==  true & pw.equals(rs.getString("PW")) == false) {
 				 System.out.println("비밀번호를 틀렸습니다.");
                  rs.close();
 			}

@@ -1,4 +1,4 @@
-package practice;
+package serverProgramming;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -6,18 +6,18 @@ import java.util.Scanner;
 public class Delete extends Access implements printProcess{
 	
 	static Scanner sc = new Scanner(System.in);
-	private static String mem_ID;
-	private static String mem_pw;
-	private static String mem_name;
-	private static String mem_gender;
-	private static String mem_age;
-	private static String mem_propertym;
-	private static String mem_paym;
-	private static Double mem_height;
-	private static Double mem_weight;
-	private static String mem_exercise;
-	private static String mem_drink;
-	private static String mem_smoking;
+	private static String ID;
+	private static String PW;
+	private static String 이름;
+	private static String 성별;
+	private static String 나이;
+	private static String 재산;
+	private static String 연봉;
+	private static Double 키;
+	private static Double 몸무게;
+	private static String 운동;
+	private static String 음주;
+	private static String 흡연;
 
 	public static void main(String[] args) {	}
 	
@@ -28,16 +28,16 @@ public class Delete extends Access implements printProcess{
 		System.out.println("회원 정보 삭제");
 		try {
 			System.out.println("삭제할 ID를 입력하세요");
-			mem_ID = sc.next();			
+			ID = sc.next();			
 		}catch(Exception e) {
 			System.out.println("ID가 틀렸습니다.");
 		}
 	
-		String sql = "delete from marry where mem_ID = ?";
+		String sql = "delete from marry where ID = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mem_ID);
+			pstmt.setString(1, ID);
 			pstmt.executeUpdate();
 			System.out.println("회원 정보 삭제");
 		} catch(SQLException e) {

@@ -1,4 +1,4 @@
-package practice;
+package serverProgramming;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,18 +12,18 @@ public class Access {
 	static PreparedStatement pstmt = null;
 	static ResultSet rs = null;
 	
-static String mem_ID;
-static String mem_pw;
-static String mem_name;
-static String mem_gender;
-static String mem_age;
-static String mem_propertym;
-static String mem_paym;
-static Double mem_height;
-static Double mem_weight;
-static String mem_exercise;
-static String mem_drink;
-static String mem_smoking;
+	static String ID;
+	static String PW;
+	static String 이름;
+	static String 성별;
+	static String 나이;
+	static String 재산;
+	static String 연봉;
+	static Double 키;
+	static Double 몸무게;
+	static String 운동;
+	static String 음주;
+	static String 흡연;
 	
 	
 	public static void DBaccessProcess() {

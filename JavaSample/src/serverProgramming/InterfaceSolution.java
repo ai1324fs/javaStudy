@@ -1,4 +1,4 @@
-package practice;
+package serverProgramming;
 
 import java.util.Scanner;
 
@@ -28,7 +28,7 @@ public class InterfaceSolution {
 		}else if(FirstID.equals("2")) {
 			System.out.println("로그인");
 			l.login_accessProcess();
-		}else if(FirstID.equals("Admin")) {
+		}else if(FirstID.equals("관리자")) {
 			System.out.println("관리자 계정 로그인 중입니다.");
 			System.out.println("비밀번호를 입력하세요");
 			FirstPW = sc.next();

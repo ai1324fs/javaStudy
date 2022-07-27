@@ -1,4 +1,4 @@
-package practice;
+package serverProgramming;
 
 import java.sql.SQLException;
 
@@ -9,7 +9,7 @@ public class Select extends Access implements printProcess{
 	public void select_accessProcess() {
 		DBaccessProcess();
 		
-		String sql = "select * from marry order by mem_ID";
+		String sql = "select * from marry order by ID";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -26,20 +26,20 @@ public class Select extends Access implements printProcess{
 		
 		try {
 			while(rs.next()) {
-				String mem_ID = rs.getString(1);
-				String mem_pw = rs.getString(2);
-			    String mem_name = rs.getString(3);
-			    String mem_gender = rs.getString(4);
-			    String mem_age = rs.getString(5);
-			    String mem_propertym = rs.getString(6);
-			    String mem_paym = rs.getString(7); 
-			    Double mem_height = rs.getDouble(8);
-			    Double mem_weight = rs.getDouble(9); 
-			    String mem_exercise = rs.getString(10);
-			    String mem_drink = rs.getString(11);
-			    String mem_smoking = rs.getString(12);
+				String ID = rs.getString(1);
+				String PW = rs.getString(2);
+			    String 이름 = rs.getString(3);
+			    String 성별 = rs.getString(4);
+			    String 나이 = rs.getString(5);
+			    String 재산 = rs.getString(6);
+			    String 연봉 = rs.getString(7); 
+			    Double 키 = rs.getDouble(8);
+			    Double 몸무게 = rs.getDouble(9); 
+			    String 운동 = rs.getString(10);
+			    String 음주 = rs.getString(11);
+			    String 흡연 = rs.getString(12);
 
-			   System.out.println(mem_ID+"\t"+mem_pw+"\t"+mem_name+"\t"+mem_gender+"\t"+mem_age+"\t"+mem_propertym+"\t"+mem_paym+"\t"+mem_height+"\t"+mem_weight+"\t"+mem_exercise+"\t"+mem_drink+"\t"+mem_smoking);
+			   System.out.println(ID+"\t"+PW+"\t"+이름+"\t"+성별+"\t"+나이+"\t"+재산+"\t"+연봉+"\t"+키+"\t"+몸무게+"\t"+운동+"\t"+음주+"\t"+흡연);
 			}
 			System.out.println("-------------------------------------------------------------------------------------------------");
 		} catch (SQLException e) {
@@ -65,30 +65,30 @@ public class Select extends Access implements printProcess{
 		DBaccessProcess();
 	
 		String sql = 
-				"select mem_name, mem_gender, mem_age, mem_exercise, mem_drink, mem_smoking, "
+				"select 이름, 성별, 나이, 운동여부, 음주여부, 흡연여부, "
 				+ "    (case "
-				+ "    when mem_propertym >= 500 then 'S급' "
-				+ "    when mem_propertym between 300 and 499 then 'A급' "
-				+ "    when mem_propertym between 200 and 299 then 'B급' "
-				+ "    when mem_propertym between 100 and 199 then 'C급' "
+				+ "    when 재산 >= 500 then 'S급' "
+				+ "    when 재산 between 300 and 499 then 'A급' "
+				+ "    when 재산 between 200 and 299 then 'B급' "
+				+ "    when 재산 between 100 and 199 then 'C급' "
 				+ "    else 'D급' "
 				+ "    end )as 재산등급 ,"
 				+ "    (case "
-				+ "    when mem_paym >= 500 then 'S급' "
-				+ "    when mem_paym between 300 and 499 then 'A급' "
-				+ "    when mem_paym between 200 and 299 then 'B급' "
-				+ "    when mem_paym between 100 and 199 then 'C급' "
+				+ "    when 연봉 >= 500 then 'S급' "
+				+ "    when 연봉 between 300 and 499 then 'A급' "
+				+ "    when 연봉 between 200 and 299 then 'B급' "
+				+ "    when 연봉 between 100 and 199 then 'C급' "
 				+ "    else 'D급' "
 				+ "    end )as 연봉등급 ,"
 				+ "    (case "
-				+ "    when mem_height >= 183 then 'S급' "
-				+ "    when mem_height between 180 and 182.99 then 'A급' "
-				+ "    when mem_height between 175 and 179.99 then 'B급' "
-				+ "    when mem_height between 170 and 174.99 then 'C급' "
+				+ "    when 키 >= 183 then 'S급' "
+				+ "    when 키 between 180 and 182.99 then 'A급' "
+				+ "    when 키 between 175 and 179.99 then 'B급' "
+				+ "    when 키 between 170 and 174.99 then 'C급' "
 				+ "    else 'D급' "
 				+ "    end )as 키등급 "
 				+ "     "
-				+ "from marry where mem_gender like 'M' order by mem_ID";
+				+ "from marry where 성별 like 'M'";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -103,18 +103,17 @@ public class Select extends Access implements printProcess{
 		
 		try {
 			while(rs.next()) {
-
-			    String mem_name = rs.getString(1);
-			    String mem_gender = rs.getString(2);
-			    String mem_age = rs.getString(3);
-			    String mem_exercise = rs.getString(4);
-			    String mem_drink = rs.getString(5);
-			    String mem_smoking = rs.getString(6);
+				String 이름 = rs.getString(1);
+				String 성별 = rs.getString(2);
+				int 나이 = rs.getInt(3);
+				String 운동 = rs.getString(4);
+				String 음주 = rs.getString(5);
+				String 흡연 = rs.getString(6);
 				String 재산등급 = rs.getString(7);
 				String 연봉등급 = rs.getString(8);
 				String 키등급 = rs.getString(9);
 				
-				System.out.println(mem_name+"\t"+mem_gender+"\t"+mem_age+"\t"+mem_exercise+"\t"+재산등급+"\t"+mem_smoking+"\t"+재산등급+"\t"+연봉등급+"\t"+키등급);
+				System.out.println(이름+"\t"+성별+"\t"+나이+"\t"+운동+"\t"+음주+"\t"+흡연+"\t"+재산등급+"\t"+연봉등급+"\t"+키등급);
 			}
 			System.out.println("----------------------------------------------------------------------");
 		}catch(SQLException e) {
@@ -140,30 +139,30 @@ public class Select extends Access implements printProcess{
 		DBaccessProcess();
 	
 		String sql = 
-				"select mem_name, mem_gender, mem_age, mem_exercise, mem_drink, mem_smoking, "
+				"select 이름, 성별, 나이, 운동여부, 음주여부, 흡연여부, "
 				+ "    (case "
-				+ "    when mem_propertym >= 500 then 'S급' "
-				+ "    when mem_propertym between 300 and 499 then 'A급' "
-				+ "    when mem_propertym between 200 and 299 then 'B급' "
-				+ "    when mem_propertym between 100 and 199 then 'C급' "
+				+ "    when 재산 >= 500 then 'S급' "
+				+ "    when 재산 between 300 and 499 then 'A급' "
+				+ "    when 재산 between 200 and 299 then 'B급' "
+				+ "    when 재산 between 100 and 199 then 'C급' "
 				+ "    else 'D급' "
 				+ "    end )as 재산등급, "
 				+ "    (case "
-				+ "    when mem_paym >= 500 then 'S급' "
-				+ "    when mem_paym between 300 and 499 then 'A급' "
-				+ "    when mem_paym between 200 and 299 then 'B급' "
-				+ "    when mem_paym between 100 and 199 then 'C급' "
+				+ "    when 연봉 >= 500 then 'S급' "
+				+ "    when 연봉 between 300 and 499 then 'A급' "
+				+ "    when 연봉 between 200 and 299 then 'B급' "
+				+ "    when 연봉 between 100 and 199 then 'C급' "
 				+ "    else 'D급' "
 				+ "    end )as 연봉등급, "
 				+ "        (case "
-				+ "    when mem_height >= 165 then 'S급' "
-				+ "    when mem_height between 160 and 164.99 then 'A급' "
-				+ "    when mem_height between 155 and 159.99 then 'B급' "
-				+ "    when mem_height between 150 and 154.99 then 'C급' "
+				+ "    when 키 >= 165 then 'S급' "
+				+ "    when 키 between 160 and 164.99 then 'A급' "
+				+ "    when 키 between 155 and 159.99 then 'B급' "
+				+ "    when 키 between 150 and 154.99 then 'C급' "
 				+ "    else 'D급' "
 				+ "    end )as 키등급  "
 				+ "     "
-				+ "from marry where mem_gender like 'F' order by mem_ID";
+				+ "from marry where 성별 like 'F' order by ID";
 		
 
 		try {
@@ -179,17 +178,17 @@ public class Select extends Access implements printProcess{
 		
 		try {
 			while(rs.next()) {
-				String mem_name = rs.getString(1);
-				String mem_gender = rs.getString(2);
-				String mem_age = rs.getString(3);
-				String mem_exercise = rs.getString(4);
-				String mem_drink = rs.getString(5);
-				String mem_smoking = rs.getString(6);
+				String 이름 = rs.getString(1);
+				String 성별 = rs.getString(2);
+				int 나이 = rs.getInt(3);
+				String 운동 = rs.getString(4);
+				String 음주 = rs.getString(5);
+				String 흡연 = rs.getString(6);
 				String 재산등급 = rs.getString(7);
 				String 연봉등급 = rs.getString(8);
 				String 키등급 = rs.getString(9);
 				
-				System.out.println(mem_name+"\t"+mem_gender+"\t"+mem_age+"\t"+mem_exercise+"\t"+mem_drink+"\t"+mem_smoking+"\t"+재산등급+"\t"+연봉등급+"\t"+키등급);
+				System.out.println(이름+"\t"+성별+"\t"+나이+"\t"+운동+"\t"+음주+"\t"+흡연+"\t"+재산등급+"\t"+연봉등급+"\t"+키등급);
 			}
 			System.out.println("----------------------------------------------------------------------");
 		}catch(SQLException e) {
