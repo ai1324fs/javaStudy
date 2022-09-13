@@ -88,6 +88,10 @@ public class Information7_method4 {
 		
 		im1.infoPrint3(); 			
 		im1.infoPrint4(); 		
+
+
+
+		System.out.println("감사합니다");
 		
 	}
 	
